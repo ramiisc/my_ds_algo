@@ -22,11 +22,24 @@ public class unique {
 		}
 		return true;
 	}
+	
+	public static Boolean isUniqueWithNODataStructure(String str) {
+		int[] asciiarr = new int[256];
+		char[] arr = str.toCharArray();
+		for (char c : arr) {
+			if (asciiarr[c] == 1) {
+				return false;
+			}
+			asciiarr[c] = 1;
+		}
+		return true;
+	}
 
 	public static void main(String args[]) {
 		Scanner scanner = new Scanner(System.in);
 		String input = scanner.nextLine();
 		System.out.printf("Given String : %s, IsUnique:%b\n", input, isUnique(input));
+		System.out.printf("Given String : %s, isUniqueWithNODataStructure:%b\n", input, isUniqueWithNODataStructure(input));
 		scanner.close();
 	}
 }
