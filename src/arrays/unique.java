@@ -23,7 +23,7 @@ public class unique {
 		return true;
 	}
 	
-	public static Boolean isUniqueWithNODataStructure(String str) {
+	public static Boolean isUniqueWithChar(String str) {
 		int[] asciiarr = new int[256];
 		char[] arr = str.toCharArray();
 		for (char c : arr) {
@@ -34,12 +34,29 @@ public class unique {
 		}
 		return true;
 	}
+	
+	// This solution is from the CTCI
+	public static Boolean isUniqueWithBoolean(String str) {
+		if (str.length() > 256 ) {
+			return false;
+		}
+		boolean[] char_set = new boolean[256];
+		for (int i =0; i < str.length() ; i++) {
+			int val = str.charAt(i);
+			if (char_set[val]) {
+				return false;
+			}
+			char_set[val] = true;
+		}
+		return true;
+	}
 
 	public static void main(String args[]) {
 		Scanner scanner = new Scanner(System.in);
 		String input = scanner.nextLine();
 		System.out.printf("Given String : %s, IsUnique:%b\n", input, isUnique(input));
-		System.out.printf("Given String : %s, isUniqueWithNODataStructure:%b\n", input, isUniqueWithNODataStructure(input));
+		System.out.printf("Given String : %s, isUniqueWithChar:%b\n", input, isUniqueWithChar(input));
+		System.out.printf("Given String : %s, isUniqueWithBoolean:%b\n", input, isUniqueWithBoolean(input));
 		scanner.close();
 	}
 }
